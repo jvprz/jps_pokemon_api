@@ -1,3 +1,6 @@
-<h2> {{pokemon.name}} </h2>
-<img src="{{pokemon.sprites.front_default}}">
+<div *ngIf="pokemon">
+  <h2> {{pokemon.name}} </h2>
+  <img src="{{pokemon.sprites.front_default}}">
+</div>
+
 <router-outlet></router-outlet>
