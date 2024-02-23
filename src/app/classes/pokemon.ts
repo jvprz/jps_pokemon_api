@@ -9,9 +9,6 @@ export interface Pokemon {
         stat: {
             name: string;
         };
-        max_stat: {
-            stat: number;
-        }[];
     }[];
     types: {
         slot: number;

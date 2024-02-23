@@ -11,7 +11,7 @@ export class AppComponent {
   pokemon!: Pokemon;
   pokedex!: number;
   total_stat: number = 0;
-  max_stat: number = 0;
+  max_stat: number[] = [];
 
   constructor(private http: HttpClient) {
     this.pokedex = this.getRandomNumber(1, 1025);
@@ -47,7 +47,7 @@ export class AppComponent {
           this.pokemon.stats[i].stat.name = 'Spe';
         };
         this.total_stat = this.total_stat + this.pokemon.stats[i].base_stat;
-        this.max_stat = Math.floor( 2 * this.pokemon.stats[0].base_stat + 204 );
+        this.max_stat[0] = Math.floor( 2 * this.pokemon.stats[0].base_stat + 204 );
       }
     });
   }

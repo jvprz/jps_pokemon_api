@@ -1,12 +1,9 @@
-  <!--
-  <img src="{{pokemon.sprites.front_default}}">
-  -->
 <div class="container text-center" *ngIf="pokemon">
-  <div class="card" style="width: 18rem;">
-    <img class="card-img-top" src="">
+  <div class="card" style="max-width: 500px;margin:0auto">
+    <img class="card-img-top" [src]="pokemon.sprites.front_default">
     <div class="card-body">
-      <h5 class="card-title"> {{pokemon.name}} </h5>
-      <span class="text-center" *ngFor="let type of pokemon.types"> {{type.type.name}} </span>
+      <h5 class="card-title">{{pokemon.name}}</h5>
+      <span class="text-center" *ngFor="let type of pokemon.types">{{type.type.name}}</span>
       <table class="table table-sm text-justify">
         <thead>
           <tr>
@@ -16,20 +13,20 @@
         </thead>
         <tbody>
           <tr *ngFor="let stat of pokemon.stats">
-            <td> {{stat.stat.name}} </td>
-            <td> {{stat.base_stat}} </td>
-          </tr>
-          <tr>
-            
-            <td>Total</td>
-            <th scope="col">{{total_stat}}</th>
-            <td> Min </td>
-            <td> Max </td>
+            <td>{{stat.stat.name}}</td>
+            <td>{{stat.base_stat}}</td>
+            <td>
+              <div class="progress" [style.width]="stat.base_stat*10+'%'">
+                <div class="progress-bar" role="progressbar" aria-valuenow="1" aria-valuemin="2" aria-valuemax="1000"></div>
+              </div>
+            </td>
+            <td>{{total_stat}}</td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
 </div>
+
 
 <router-outlet></router-outlet>
