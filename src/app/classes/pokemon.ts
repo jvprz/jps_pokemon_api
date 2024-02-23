@@ -1,4 +1,4 @@
-export interface PokeApi {
+export interface Pokemon {
     name: string;
     url: string;
     sprites: {
