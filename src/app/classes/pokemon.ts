@@ -8,7 +8,10 @@ export interface Pokemon {
         base_stat: number;
         stat: {
             name: string;
-        }
+        };
+        max_stat: {
+            stat: number;
+        }[];
     }[];
     types: {
         slot: number;

@@ -11,6 +11,7 @@ export class AppComponent {
   pokemon!: Pokemon;
   pokedex!: number;
   total_stat: number = 0;
+  max_stat: number = 0;
 
   constructor(private http: HttpClient) {
     this.pokedex = this.getRandomNumber(1, 1025);
@@ -21,7 +22,7 @@ export class AppComponent {
   }
 
   getPokemon() {
-    const url = 'https://pokeapi.co/api/v2/pokemon/' + this.pokedex;
+    const url = 'https://pokeapi.co/api/v2/pokemon/63';
     this.http.get<Pokemon>(url).subscribe((data: Pokemon) => {
       this.pokemon = data;
       // Capitalize Pokemon name
@@ -46,7 +47,8 @@ export class AppComponent {
           this.pokemon.stats[i].stat.name = 'Spe';
         };
         this.total_stat = this.total_stat + this.pokemon.stats[i].base_stat;
-      }  
+        this.max_stat = Math.floor( 2 * this.pokemon.stats[0].base_stat + 204 );
+      }
     });
   }
 
