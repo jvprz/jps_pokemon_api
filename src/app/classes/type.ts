@@ -87,5 +87,5 @@ export interface Type {
             url: string;
         };
     }[];
-    pokemon: Pokemon
+    pokemon: Pokemon;
 };

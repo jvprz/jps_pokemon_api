@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Pokemon } from './class/pokemon';
+import { Pokemon } from './classes/pokemon';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +10,7 @@ import { Pokemon } from './class/pokemon';
 export class AppComponent {
   pokemon!: Pokemon;
   pokedex!: number;
+  total_stat: number = 0;
 
   constructor(private http: HttpClient) {
     this.pokedex = this.getRandomNumber(1, 1025);
@@ -26,7 +27,25 @@ export class AppComponent {
       // Capitalize Pokemon name
       this.pokemon.name = this.pokemon.name.charAt(0).toUpperCase() + this.pokemon.name.slice(1);
       for (let i = 0; i < 6; i++) {
-        this.pokemon.stats[i].stat.name = this.pokemon.stats[i].stat.name.charAt(0).toUpperCase() + this.pokemon.stats[i].stat.name.slice(1);
+        if (this.pokemon.stats[i].stat.name == 'hp') {
+          this.pokemon.stats[i].stat.name = 'HP';
+        };
+        if (this.pokemon.stats[i].stat.name == 'attack') {
+          this.pokemon.stats[i].stat.name = 'Atk';
+        };
+        if (this.pokemon.stats[i].stat.name == 'defense') {
+          this.pokemon.stats[i].stat.name = 'Def';
+        };
+        if (this.pokemon.stats[i].stat.name == 'special-attack') {
+          this.pokemon.stats[i].stat.name = 'Sp. Atk';
+        };
+        if (this.pokemon.stats[i].stat.name == 'special-defense') {
+          this.pokemon.stats[i].stat.name = 'Sp. Def';
+        };
+        if (this.pokemon.stats[i].stat.name == 'speed') {
+          this.pokemon.stats[i].stat.name = 'Spe';
+        };
+        this.total_stat = this.total_stat + this.pokemon.stats[i].base_stat;
       }  
     });
   }

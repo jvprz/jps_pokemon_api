@@ -16,8 +16,13 @@
         </thead>
         <tbody>
           <tr *ngFor="let stat of pokemon.stats">
-            <td > {{stat.stat.name}} </td>
-            <td > {{stat.base_stat}} </td>
+            <td> {{stat.stat.name}} </td>
+            <td> {{stat.base_stat}} </td>
+          </tr>
+          <tr>
+            
+            <td>Total</td>
+            <th scope="col">{{total_stat}}</th>
           </tr>
         </tbody>
       </table>
