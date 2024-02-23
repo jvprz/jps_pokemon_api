@@ -10,4 +10,10 @@ export interface PokeApi {
             name: string;
         }
     }[];
+    types: {
+        slot: number;
+        type: {
+            name: string;
+        }
+    }[];
 };

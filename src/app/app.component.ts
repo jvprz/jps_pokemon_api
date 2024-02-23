@@ -25,6 +25,9 @@ export class AppComponent {
       this.pokemon = data;
       // Capitalize Pokemon name
       this.pokemon.name = this.pokemon.name.charAt(0).toUpperCase() + this.pokemon.name.slice(1);
+      for (let i = 0; i < 6; i++) {
+        this.pokemon.stats[i].stat.name = this.pokemon.stats[i].stat.name.charAt(0).toUpperCase() + this.pokemon.stats[i].stat.name.slice(1);
+      }  
     });
   }
 
