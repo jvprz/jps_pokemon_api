@@ -22,7 +22,7 @@ export class AppComponent {
   }
 
   getPokemon() {
-    const url = 'https://pokeapi.co/api/v2/pokemon/63';
+    const url = 'https://pokeapi.co/api/v2/pokemon/1';
     this.http.get<Pokemon>(url).subscribe((data: Pokemon) => {
       this.pokemon = data;
       // Capitalize Pokemon name
