@@ -13,6 +13,8 @@ export interface Pokemon {
         base_stat: number;
         stat: {
             name: string;
+            max_stat: number;
+            min_stat: number;
         };
     }[];
     types: {
