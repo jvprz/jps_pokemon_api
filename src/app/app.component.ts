@@ -9,10 +9,10 @@ import { Pokemon } from './classes/pokemon';
 })
 export class AppComponent {
   /* Const */
-  HP_min: number = 110;
-  HP_max: number = 204;
-  ST_min: number = 78;
-  ST_max: number = 108;
+  readonly HP_min: number = 110;
+  readonly HP_max: number = 204;
+  readonly ST_min: number = 78;
+  readonly ST_max: number = 108;
   /* Variables */
   pokemon!: Pokemon;
   pokedex!: number;
@@ -117,7 +117,7 @@ export class AppComponent {
     /* Valor actual = (52 + 252 / 4 + 31) * 100 / 100 = 212 */
     for (let i = 0; i < 6; i++) {
       pokemon.stats[i].stat.percentage = Math.floor((pokemon.stats[i].base_stat + 252 / 4 + 31) * 100 / 100);
-      pokemon.stats[i].stat.percentage = Math.floor((pokemon.stats[i].stat.percentage / pokemon.stats[0].stat.min_stat) * 100);
+      pokemon.stats[i].stat.percentage = Math.floor((pokemon.stats[i].stat.percentage / pokemon.stats[0].stat.max_stat) * 100);
     }
     return pokemon;
   }
