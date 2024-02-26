@@ -51,10 +51,12 @@ export class AppComponent {
     });
   }
 
+  /* Calculate max HP stat */
   getMaxHPStat(hp: number) {
     return Math.floor(2 * hp + 204);
   }
 
+  /* Get random PokéDex number */
   getRandomNumber(min: number, max: number):number {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }

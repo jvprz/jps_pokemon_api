@@ -3,7 +3,8 @@
     <img class="card-img-top" [src]="pokemon.sprites.other.home.front_default">
     <div class="card-body">
       <h5 class="card-title">{{pokemon.name}}</h5>
-      <span class="text-center" *ngFor="let type of pokemon.types">{{type.type.name}}</span>
+
+      <span class="text-center ml-1 mr-1" *ngFor="let type of pokemon.types"><img class="type" src="./../assets/images/type_icons/Pokemon_Type_Icon_{{type.type.name}}.png" alt="{{type.type.name}}"></span>
       <table class="text-justify" style="width: 100%;">
           <tr>
             <td class="font-weight-bold">Stat</td>
