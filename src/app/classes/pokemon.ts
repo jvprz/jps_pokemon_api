@@ -15,6 +15,7 @@ export interface Pokemon {
             name: string;
             max_stat: number;
             min_stat: number;
+            percentage: number;
         };
     }[];
     types: {
