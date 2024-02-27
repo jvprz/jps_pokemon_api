@@ -32,7 +32,7 @@ export class AppComponent {
   }
 
   getPokemon() {
-    const url = 'https://pokeapi.co/api/v2/pokemon/289';
+    const url = 'https://pokeapi.co/api/v2/pokemon/4';
     this.http.get<Pokemon>(url).subscribe((data: Pokemon) => {
       this.pokemon = this.setConfigStats(data);
     });
@@ -126,6 +126,38 @@ export class AppComponent {
       pokemon.stats[i].stat.percentage = Math.floor((pokemon.stats[i].base_stat / 200) * 100);
     }
     return pokemon;
+  }
+
+  /* Change color of Pokémon bar */
+  getProgressBarClass(percentage: number) {
+    /* Very low (Less than 40) */
+    if (percentage < 15) {
+      return "bg-danger";
+    }
+    /* Low (40 to 65) */
+    if (percentage >= 15 && percentage < 25) {
+      return "bg-orange";
+    }
+    /* Average (65 to 80) */
+    if (percentage >= 25 && percentage < 50) {
+      return "bg-warning"
+    }
+    /* Decent (80 to 90) */
+    if (percentage >= 50 && percentage < 60) {
+      return "bg-lime"
+    }
+    /* Good (90 to 110) */
+    if (percentage >= 60 && percentage < 70) {
+      return "bg-light-green"
+    }
+    /* Great (110 to 130) */
+    if (percentage >= 70 && percentage < 90) {
+      return "bg-success"
+    }
+    /* Exellent (130 or higher) */
+    else {
+      return "bg-primary"
+    }
   }
 
 
