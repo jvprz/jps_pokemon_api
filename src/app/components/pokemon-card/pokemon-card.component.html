@@ -1,5 +1,5 @@
-<div class="container text-center" *ngIf="pokemon">
-  <div class="card" style="max-width: 500px;margin:0auto">
+
+  <div class="card text-center" *ngIf="pokemon" style="max-width: 500px;margin:0auto">
     <img class="card-img-top" [src]="pokemon.sprites.other.home.front_default">
     <div class="card-body">
       <h5 class="card-title">{{pokemon.name}}</h5>
@@ -31,4 +31,4 @@
       </table>
     </div>
   </div>
-</div>
+
