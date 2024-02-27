@@ -11,8 +11,15 @@ export class AppComponent {
   /* Const */
   readonly HP_min: number = 110;
   readonly HP_max: number = 204;
-  readonly ST_min: number = 78;
-  readonly ST_max: number = 108;
+  readonly FLOOR: number = 1;
+  readonly MIN_IV: number = 0;
+  readonly MAX_IV: number = 31;
+  readonly MIN_EV: number = 0;
+  readonly MAX_EV: number = 252;
+  readonly LEVEL: number = 100;
+  readonly MIN_NATURE: number = 0.9;
+  readonly MAX_NATURE: number = 1.1;
+
   /* Variables */
   pokemon!: Pokemon;
   pokedex!: number;
@@ -25,7 +32,7 @@ export class AppComponent {
   }
 
   getPokemon() {
-    const url = 'https://pokeapi.co/api/v2/pokemon/1';
+    const url = 'https://pokeapi.co/api/v2/pokemon/289';
     this.http.get<Pokemon>(url).subscribe((data: Pokemon) => {
       this.pokemon = this.setConfigStats(data);
     });
@@ -98,7 +105,7 @@ export class AppComponent {
   getMinOtherStat(pokemon: Pokemon) {
     /* Other Stats = (floor(0.01 x (2 x Base + IV + floor(0.25 x EV)) x Level) + 5) x Nature */
     for (let i = 1; i < 6; i++) {
-      pokemon.stats[i].stat.min_stat = Math.floor((1 * (0.01 * (2 * pokemon.stats[i].base_stat + 0 + 1 * (0.25 * 0)) * 100) + 5) * 0.9);
+      pokemon.stats[i].stat.min_stat = Math.floor((this.FLOOR * (0.01 * (2 * pokemon.stats[i].base_stat + this.MIN_IV + this.FLOOR * (0.25 * this.MIN_EV)) * this.LEVEL) + 5) * this.MIN_NATURE);
     }
     return pokemon;
   }
@@ -107,7 +114,7 @@ export class AppComponent {
   getMaxOtherStat(pokemon: Pokemon) {
     /* Other Stats = (floor(0.01 x (2 x Base + IV + floor(0.25 x EV)) x Level) + 5) x Nature */
     for (let i = 1; i < 6; i++) {
-      pokemon.stats[i].stat.max_stat = Math.floor((1 * (0.01 * (2 * pokemon.stats[i].base_stat + 31 + 1 * (0.25 * 252)) * 100) + 5) * 1.1);;
+      pokemon.stats[i].stat.max_stat = Math.floor((this.FLOOR * (0.01 * (2 * pokemon.stats[i].base_stat + this.MAX_IV + this.FLOOR * (0.25 * this.MAX_EV)) * this.LEVEL) + 5) * this.MAX_NATURE);
     }
     return pokemon;
   }
@@ -116,8 +123,7 @@ export class AppComponent {
   getPercentageStat(pokemon: Pokemon) {
     /* Valor actual = (52 + 252 / 4 + 31) * 100 / 100 = 212 */
     for (let i = 0; i < 6; i++) {
-      pokemon.stats[i].stat.percentage = Math.floor((pokemon.stats[i].base_stat + 252 / 4 + 31) * 100 / 100);
-      pokemon.stats[i].stat.percentage = Math.floor((pokemon.stats[i].stat.percentage / pokemon.stats[0].stat.max_stat) * 100);
+      pokemon.stats[i].stat.percentage = Math.floor((pokemon.stats[i].base_stat / 200) * 100);
     }
     return pokemon;
   }
