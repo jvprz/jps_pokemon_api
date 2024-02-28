@@ -1,34 +1,35 @@
-
-  <div class="card text-center" *ngIf="pokemon" style="max-width: 500px;margin:0auto">
+  <div class="card text-center" *ngIf="pokemon">
     <img class="card-img-top" [src]="pokemon.sprites.other.home.front_default">
     <div class="card-body">
       <h5 class="card-title">{{pokemon.name}}</h5>
 
       <span class="text-center ml-1 mr-1" *ngFor="let type of pokemon.types"><img class="type" src="./../assets/images/type_icons/Pokemon_Type_Icon_{{type.type.name}}.png" alt="{{type.type.name}}"></span>
-      <table class="text-justify" style="width: 100%;">
-          <tr>
-            <td class="font-weight-bold">Stat</td>
-            <td class="font-weight-bold">Value</td>
-          </tr>
-          <tr *ngFor="let stat of pokemon.stats">
-            <td>{{stat.stat.name}}</td>
-            <td>{{stat.base_stat}}</td>
-            <td style="width: 50%;">
-              <div class="progress">
-                <div class="progress-bar" [class]="getProgressBarClass(stat.stat.percentage)" role="progressbar" [style]="{'width': stat.stat.percentage + '%'}" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </td>
-            <td><span class="ml-2">{{stat.stat.min_stat}}</span></td>
-            <td><span class="ml-2">{{stat.stat.max_stat}}</span></td>
-          </tr>
-          <tr>
-              <td></td>
-              <td class="font-weight-bold">{{total_stat}}</td>
-              <td></td>
-              <td class="text-center">min</td>
-              <td class="text-center">max</td>
-          </tr>
-      </table>
+      <div class="row mt-3" *ngFor="let stat of pokemon.stats">
+        <div class="col-md-1 d-flex name-stat">
+          <small class="font-weight-bold">{{stat.stat.name}}</small>
+        </div>
+        <div class="col-md-1 d-flex name-stat">
+          <small>{{stat.base_stat}}</small>
+        </div>
+        <div class="col-md-6">
+          <div class="progress">
+            <div class="progress-bar" [class]="getProgressBarClass(stat.stat.percentage)" role="progressbar" [style]="{'width': stat.stat.percentage + '%'}" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
+        <div class="col-md-1 name-stat">
+          <span class="ml-2 text-left d-flex"><small>{{stat.stat.min_stat}}</small></span>
+        </div>
+        <div class="col-md-1 name-stat">
+          <span class="ml-2 d-flex"><small>{{stat.stat.max_stat}}</small></span>
+        </div>
+      </div>
+
+      <div class="row mt-3">
+        <div class="col-md-1"></div>
+        <div class="col-md-1 name-stat"><small class="font-weight-bold d-flex">{{total_stat}}</small></div>
+        <div class="col-md-6"></div>
+        <div class="col-md-1 text-center d-flex name-stat"><small>min</small></div>
+        <div class="col-md-1 text-center d-flex name-stat"><small>max</small></div>
+      </div>
     </div>
   </div>
-
