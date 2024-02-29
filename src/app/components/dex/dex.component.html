@@ -1,0 +1,9 @@
+<div class="container">
+  <div class="pokemon-list" *ngIf="pokedex">
+    <div class="pokemon-card" *ngFor="let pokemon of pokedex">
+      <button type="button" class="btn btn-outline-secondary"><img src="{{pokemon.sprites.other.home.front_default}}" alt="{{pokemon.name}}"></button>
+    </div>
+  </div>
+  <div *ngIf="isLoading">Cargando...</div>
+  <div *ngIf="error">Oops! Ha ocurrido un error.</div>
+</div>

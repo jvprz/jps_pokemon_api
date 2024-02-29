@@ -12,4 +12,5 @@ export class TeamComponent {
 
   ngOnInit(): void {
   }
+
 }
