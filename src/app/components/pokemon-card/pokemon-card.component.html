@@ -1,4 +1,11 @@
-<div class="text-right">#{{number}}</div>
+<div class="row mt-2">
+  <div class="col">
+    <div>#{{number}}</div>
+  </div>
+  <div class="col">
+    <div class="text-right"><i class="bi bi-x-lg"></i></div>
+  </div>
+</div>
 <div class="row pt-4 pb-4 align-items-center" *ngIf="pokemon">
   <div class="col-md-1  ">
     <img class="d-flex type2" [src]="pokemon.sprites.front_default">
