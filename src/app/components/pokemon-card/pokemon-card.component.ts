@@ -24,6 +24,7 @@ export class PokemonCardComponent {
   pokemon!: Pokemon;
   pokedex!: number;
   total_stat: number = 0;
+  number: number = 395;
 
   constructor(private http: HttpClient) { }
 
@@ -32,7 +33,7 @@ export class PokemonCardComponent {
   }
 
   getPokemon() {
-    const url = 'https://pokeapi.co/api/v2/pokemon/4';
+    const url = 'https://pokeapi.co/api/v2/pokemon/' + this.number;
     this.http.get<Pokemon>(url).subscribe((data: Pokemon) => {
       this.pokemon = this.setConfigStats(data);
     });

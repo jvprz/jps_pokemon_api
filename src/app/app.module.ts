@@ -9,6 +9,7 @@ import { PokemonCardComponent } from './components/pokemon-card/pokemon-card.com
 import { TeamComponent } from './components/team/team.component';
 import { DexComponent } from './components/dex/dex.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { TeamFormatComponent } from './components/team-format/team-format.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     PokemonCardComponent,
     TeamComponent,
     DexComponent,
-    NavbarComponent
+    NavbarComponent,
+    TeamFormatComponent
   ],
   imports: [
     BrowserModule,

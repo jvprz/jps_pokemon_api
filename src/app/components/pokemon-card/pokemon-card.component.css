@@ -1,6 +1,8 @@
 .type {
-  width: 10%;
-  height: 10%;
+  width: 35% !important;
+}
+.type2 {
+  width: 250% !important;
 }
 
 .name-stat {
