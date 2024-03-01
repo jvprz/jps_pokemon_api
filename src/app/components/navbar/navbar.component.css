@@ -1,3 +1,6 @@
 .navbar {
     background-color: var(--color-primary);
 }
+.icon {
+    width: 2%;
+}
