@@ -8,13 +8,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { PokemonCardComponent } from './components/pokemon-card/pokemon-card.component';
 import { TeamComponent } from './components/team/team.component';
 import { DexComponent } from './components/dex/dex.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PokemonCardComponent,
     TeamComponent,
-    DexComponent
+    DexComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
