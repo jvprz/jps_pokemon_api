@@ -1,58 +1,136 @@
-<div class="row mt-2">
-  <div class="col">
-    <div class="text-info">#{{number}}</div>
-  </div>
-  <div class="col">
-    <div class="text-right text-danger"><i class="bi bi-x-lg"></i></div>
-  </div>
-</div>
-<div class="row pt-4 pb-4 align-items-center" *ngIf="pokemon">
-  <div class="col-md-1  ">
-    <img class="d-flex type2" [src]="pokemon.sprites.front_default">
-  </div>
-  <div class="col-md-3 text-capitalize d-flex">
-    <div class="row">
-      <div class="col ml-4">
-        <span>{{pokemon.name}}</span>
-      </div>
-      <div class="col d-flex">
-        <img *ngFor="let type of pokemon.types" class="d-flex type" src="./../assets/images/type_icons/Pokemon_Type_Icon_{{type.type.name}}.png" alt="{{type.type.name}}">
-      </div>
+
+<!-- Pokémon slot -->
+<button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#exampleModal">
+  <div class="row">
+    <div class="col">
+      <div class="text-info">#{{number}}</div>
+    </div>
+    <div class="col">
+      <div class="text-right text-danger mr-1"><i class="bi bi-x-lg"></i></div>
     </div>
   </div>
-  <div class="col-md-8">
-    <div class="row" *ngFor="let stat of pokemon.stats">
-      <div class="col">
-        <span>{{stat.stat.name}}</span>
-      </div>
-      <div class="col">
-        <span>{{stat.base_stat}}</span>
-      </div>
-      <div class="col-md-4">
-        <div class="progress mr-4">
-          <div class="progress-bar" [class]="getProgressBarClass(stat.stat.percentage)" role="progressbar" [style]="{'width': stat.stat.percentage + '%'}" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+  <div class="row">
+    <div class="col">
+      <img class="d-flex" [src]="pokemon.sprites.front_default">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <span class="text-capitalize">{{pokemon.name}}</span>
+    </div>
+  </div>
+  <!--
+  <div class="row">
+    <div class="col">
+      <div class="text-info">#{{number}}</div>
+    </div>
+    <div class="col">
+      <div class="text-right text-danger"><i class="bi bi-x-lg"></i></div>
+    </div>
+  </div>
+  <div class="row pt-4 pb-4 align-items-center" *ngIf="pokemon">
+    <div class="col-md-2  ">
+      <img class="d-flex type2" [src]="pokemon.sprites.front_default">
+    </div>
+    <div class="col-md-3 text-capitalize d-flex">
+      <div class="row">
+        <div class="col ml-4">
+          <span>{{pokemon.name}}</span>
+        </div>
+        <div class="col d-flex">
+          <img *ngFor="let type of pokemon.types" class="d-flex type" src="./../assets/images/type_icons/Pokemon_Type_Icon_{{type.type.name}}.png" alt="{{type.type.name}}">
         </div>
       </div>
-      <div class="col">
-        <span>{{stat.stat.min_stat}}</span>
+    </div>
+
+    <div class="col-md-8">
+      <div class="row" *ngFor="let stat of pokemon.stats">
+        <div class="col">
+          <span>{{stat.stat.name}}</span>
+        </div>
+        <div class="col">
+          <span>{{stat.base_stat}}</span>
+        </div>
+        <div class="col-md-4">
+          <div class="progress mr-4">
+            <div class="progress-bar" [class]="getProgressBarClass(stat.stat.percentage)" role="progressbar" [style]="{'width': stat.stat.percentage + '%'}" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
+        <div class="col">
+          <span>{{stat.stat.min_stat}}</span>
+        </div>
+        <div class="col">
+          <span>{{stat.stat.max_stat}}</span>
+        </div>
       </div>
-      <div class="col">
-        <span>{{stat.stat.max_stat}}</span>
+      <div class="row">
+        <div class="col">
+        </div>
+        <div class="col">
+          <span class="font-weight-bold">{{total_stat}}</span>
+        </div>
+        <div class="col-md-4">
+        </div>
+        <div class="col">
+          <span class="font-weight-bold">min</span>
+        </div>
+        <div class="col">
+          <span class="font-weight-bold">max</span>
+        </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col">
+  </div>
+  -->
+</button>
+
+<!-- More details -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-capitalize" id="exampleModalLabel">{{pokemon.name}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
-      <div class="col">
-        <span class="font-weight-bold">{{total_stat}}</span>
-      </div>
-      <div class="col-md-4">
-      </div>
-      <div class="col">
-        <span class="font-weight-bold">min</span>
-      </div>
-      <div class="col">
-        <span class="font-weight-bold">max</span>
+      <div class="modal-body">
+        <div class="col">
+          <div class="row" *ngFor="let stat of pokemon.stats">
+            <div class="col-md-3">
+              <span>{{stat.stat.name}}</span>
+            </div>
+            <div class="col">
+              <span>{{stat.base_stat}}</span>
+            </div>
+            <div class="col-md-4">
+              <div class="progress mr-4">
+                <div class="progress-bar" [class]="getProgressBarClass(stat.stat.percentage)" role="progressbar" [style]="{'width': stat.stat.percentage + '%'}" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+            <div class="col">
+              <span>{{stat.stat.min_stat}}</span>
+            </div>
+            <div class="col">
+              <span>{{stat.stat.max_stat}}</span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3">
+            </div>
+            <div class="col">
+              <span class="font-weight-bold">{{total_stat}}</span>
+            </div>
+            <div class="col-md-4">
+            </div>
+            <div class="col">
+              <span class="font-weight-bold">min</span>
+            </div>
+            <div class="col">
+              <span class="font-weight-bold">max</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+  </div>
 </div>

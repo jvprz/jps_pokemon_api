@@ -24,7 +24,7 @@ export class PokemonCardComponent {
   pokemon!: Pokemon;
   pokedex!: number;
   total_stat: number = 0;
-  number: number = 151;
+  number: number = 1;
 
   constructor(private http: HttpClient) { }
 
