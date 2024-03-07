@@ -10,6 +10,7 @@ import { TeamComponent } from './components/team/team.component';
 import { DexComponent } from './components/dex/dex.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { TeamFormatComponent } from './components/team-format/team-format.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { TeamFormatComponent } from './components/team-format/team-format.compon
     TeamComponent,
     DexComponent,
     NavbarComponent,
-    TeamFormatComponent
+    TeamFormatComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
